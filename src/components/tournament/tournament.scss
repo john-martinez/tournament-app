@@ -1,0 +1,52 @@
+.tournament {
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+  height: 100px;
+  position: relative;
+  transition-duration: .3s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &__row {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+
+    div > p {
+      margin: 0;
+      font-size: .6rem;
+    }
+
+    div > p > span {
+      font-weight: bold;
+    }
+  }
+
+  &__header {
+    margin: 5px 0 -5px 0;
+    font-size: 1.2rem;
+  }
+
+  &__status {
+    font-size: 0.6rem;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    letter-spacing: 1px;
+  }
+
+  &__date {
+    font-style: italic;
+  }
+
+  &__type {
+    font-size: 0.8rem;
+    text-transform: capitalize;
+  }
+}

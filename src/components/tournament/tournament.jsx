@@ -1,11 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './tournament.scss';
 
 export default function tournament({ data }){
   const {
     createdDate,
     name, 
-    players,
     status,
     type,
     winner,
@@ -25,7 +25,11 @@ export default function tournament({ data }){
 
   const reformatType = (type) => type.replace("_", " ");
  return (
-  <div className="tournament" id={_id}>
+  <Link 
+    className="tournament" 
+    id={_id}
+    to={`tournaments/${_id}`}
+  >
     <div className="tournament__row">
       <div>
         <h2 className="tournament__header">{name}</h2>
@@ -42,6 +46,6 @@ export default function tournament({ data }){
         }
       </div>
     </div>
-  </div>
+  </Link>
  );
 }

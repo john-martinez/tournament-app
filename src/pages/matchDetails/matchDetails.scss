@@ -1,0 +1,54 @@
+.match-details {
+  height: 100vh;
+  overflow: hidden;
+  margin: 5px;
+  
+
+  &__name {
+    text-align: center;
+    margin-top: 0;
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__result {
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+  }
+
+  &__item {
+    flex-basis: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+
+    &--winner {
+      border: 1px solid green;
+      color: green;
+    }
+
+    &--loser {
+      border: 1px solid red;
+      color: red
+    }
+    &--versus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    > h3 {
+      font-size: 5rem;
+      margin-top: 80px;
+      margin-bottom: 0;
+    }
+  }
+}

@@ -43,15 +43,16 @@ export default class TournamentDetails extends Component {
   
   render(){
     const { rounds, tournament } = this.state;
+    const { status } = tournament;
     const doesRoundsExist = !!rounds[1];
-    const isGated = !!(tournament.status === 'paused')
+    const isGated = !!(status === 'paused' || status === 'new')
 
     return(
       <div className="tournament-details">
         {doesRoundsExist && this.renderRoundList()}
         { isGated && (
           <div className="tournament-details__gate">
-            <h2 className="tournament-details__copy">Tournament is currently paused</h2>
+            <h2 className="tournament-details__copy">Tournament is currently {status}</h2>
           </div>
         )}
         

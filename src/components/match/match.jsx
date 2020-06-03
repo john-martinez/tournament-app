@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './match.scss';
 
 export default function Match({ data }){
@@ -14,7 +15,8 @@ export default function Match({ data }){
   const isClickable = !hasAllPlayers || isFinished;
   
   return (
-    <div 
+    <Link 
+      to={'/match/' + _id}
       className={`match ${isClickable ? 'match--unclickable' : ''}`} 
       key={_id}
     >
@@ -45,6 +47,6 @@ export default function Match({ data }){
         {player_2 && player_2.score}
       </span>
       </div>
-    </div>
+    </Link>
   );
 }

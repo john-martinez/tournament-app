@@ -34,6 +34,7 @@ export default class TournamentDetails extends Component {
 
   renderRoundList = () => {
     let rounds = [];
+
     for (let round in this.state.rounds){
       rounds = [ ...rounds, <Round key={round} round={round} matches={this.state.rounds[round]} /> ]
     }
@@ -41,11 +42,19 @@ export default class TournamentDetails extends Component {
   }
   
   render(){
-    const doesRoundsExist = !!this.state.rounds[1];
-    
+    const { rounds, tournament } = this.state;
+    const doesRoundsExist = !!rounds[1];
+    const isGated = !!(tournament.status === 'paused')
+
     return(
       <div className="tournament-details">
         {doesRoundsExist && this.renderRoundList()}
+        { isGated && (
+          <div className="tournament-details__gate">
+            <h2 className="tournament-details__copy">Tournament is currently paused</h2>
+          </div>
+        )}
+        
       </div>
     );
   }

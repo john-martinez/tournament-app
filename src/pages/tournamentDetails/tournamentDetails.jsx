@@ -35,14 +35,14 @@ export default class TournamentDetails extends Component {
   renderRoundList = () => {
     let rounds = [];
     for (let round in this.state.rounds){
-      rounds = [ ...rounds, <Round round={round} matches={this.state.rounds[round]} /> ]
+      rounds = [ ...rounds, <Round key={round} round={round} matches={this.state.rounds[round]} /> ]
     }
     return rounds;
   }
   
   render(){
     const doesRoundsExist = !!this.state.rounds[1];
-
+    
     return(
       <div className="tournament-details">
         {doesRoundsExist && this.renderRoundList()}

@@ -1,16 +1,43 @@
 .match {
   width: 150px;
+  padding: 5px;
+  transition: .3s;
 
+  &--unclickable {
+    pointer-events: none;
+  } 
+
+  &:hover {
+    background-color: lightgray;
+    cursor: pointer;
+  }
   &__number {
     text-align: center;
     margin-bottom: 3px;
   }
+
+  &__name {
+    display: flex;
+    align-items: center;
+  }
+  &__winner {
+    display: inline-block;
+    vertical-align: center;
+    font-size: .4rem;
+    border: 0.5px solid green;
+    background-color: green;
+    color: white;
+    padding: 2px 5px;
+    margin-left: 10px;
+  }
+
   &__player {
     display: flex;
     justify-content: space-between;
     border: 1px solid black;
     padding: 5px;
     min-height: 1rem;
+    background-color: white;
 
     &:last-of-type {
       border-top: none;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Tournament from '../../components/tournament/tournament';
+import Tournament from '../tournament/tournament';
 import './tournamentList.scss';
 import axios from 'axios';
 

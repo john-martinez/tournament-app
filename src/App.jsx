@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
-import TournamentList from './pages/tournamentList/tournamentList';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Tournaments from './pages/tournaments/tournaments';
 import TournamentDetails from './pages/tournamentDetails/tournamentDetails';
 import MatchDetails from './pages/matchDetails/matchDetails';
 import './App.css';
@@ -15,7 +15,7 @@ function App() {
           </Route>
           <Route path='/tournaments/:id' component={ TournamentDetails } />
           <Route path='/match/:id' component={ MatchDetails } />
-          <Route path='/tournaments' component={ TournamentList } />
+          <Route path='/tournaments' component={ Tournaments } />
         </Switch>
       </BrowserRouter>
     </div>

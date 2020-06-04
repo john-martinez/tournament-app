@@ -50,6 +50,16 @@ export default class TournamentDetails extends Component {
       .catch(err=>console.log(err))
   }
 
+  deleteTournament = () => {
+    const { id } = this.props.match.params
+    axios
+      .delete(`http://localhost:8000/tournament/${id}/delete`)
+      .then(_=>this.props.history.push('/'))
+      .catch(err=>console.log(err))
+
+
+
+  }
   renderCopy = () => {
     const { status } = this.state.tournament;
     return <Gate type={ status } handler={()=>this.updateTournamentStatus('start')} />
@@ -69,6 +79,9 @@ export default class TournamentDetails extends Component {
           </button>
           <button className="tournament-details__button" onClick={()=>this.updateTournamentStatus('cancel')}>
             Cancel
+          </button>
+          <button className="tournament-details__button" onClick={()=>this.deleteTournament('delete')}>
+            Delete
           </button>
         </h1>
         {doesRoundsExist && this.renderRoundList()}

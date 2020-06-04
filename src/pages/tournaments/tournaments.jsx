@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TournamentList from '../../components/tournamentList/tournamentList';
+import Modal from '../../components/modal/modal';
 import axios from 'axios';
 import './tournaments.scss';
 
@@ -44,13 +45,29 @@ export default class Tournament extends Component {
       })
       .catch(err=>console.log(err))
   }
+
+  updateModalState = (e,modalState) => {
+    let newState = true;
+
+    if (!modalState && e.target.classList.value === "modal"){
+      newState = false;
+    } 
+
+    this.setState({
+      isShowModal: newState
+    })
+  }
+
   render(){
+    const { tournaments, isShowModal } = this.state;
+
     return (
       <main className="tournaments">
         <div className="side-bar">
-          <button onClick={this.createTournament}>CREATE</button>
+          <button onClick={(e)=>this.updateModalState(e, true)}>CREATE</button>
         </div>
-        <TournamentList tournaments={this.state.tournaments}/>
+        <TournamentList tournaments={tournaments}/>
+        {isShowModal && <Modal updateModalState={this.updateModalState}/>}
       </main>
     );
   }

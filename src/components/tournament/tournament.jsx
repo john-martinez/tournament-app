@@ -18,8 +18,6 @@ export default function tournament({ data }){
     const splitDate = dateString.split('T');
     let date = splitDate[0];
     let time = splitDate[1].substr(0,splitDate[1].length - TIME_END_INDEX);
-    console.log(date)
-    console.log(time);
     return `${date}`
   }
 

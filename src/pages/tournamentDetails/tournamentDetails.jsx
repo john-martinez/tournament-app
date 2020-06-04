@@ -44,7 +44,8 @@ export default class TournamentDetails extends Component {
 
   startTournament = () => {
     const { id } = this.props.match.params
-    axios.put(`http://localhost:8000/tournament/${id}/start`, {})
+    axios
+      .put(`http://localhost:8000/tournament/${id}/start`, {})
       .then(_=>this.retrieveTournament())
       .catch(err=>console.log(err))
   }
@@ -56,12 +57,13 @@ export default class TournamentDetails extends Component {
   }
   render(){
     const { rounds, tournament } = this.state;
-    const { status } = tournament;
+    const { status, name } = tournament;
     const doesRoundsExist = !!rounds[1];
     const isGated = !!(status === 'paused' || status === 'new' || status === 'canceled')
-    console.log(tournament);
+    
     return(
       <div className="tournament-details">
+        <h1 className="tournament-details__header">{ name }</h1>
         {doesRoundsExist && this.renderRoundList()}
         { isGated && (
           <div className="tournament-details__gate">

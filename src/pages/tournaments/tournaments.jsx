@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TournamentList from '../../components/tournamentList/tournamentList';
+import NewTournamentForm from '../../components/newTournamentForm/newTournamentForm';
 import Modal from '../../components/modal/modal';
 import axios from 'axios';
 import './tournaments.scss';
@@ -24,18 +25,9 @@ export default class Tournament extends Component {
   createTournament = () => {
     axios
       .post(`http://localhost:8000/tournament/create`, {
-        "name": "Test",
+        "name": sessionStorage.getItem("nameInput"),
         "type": "single_elimination",
-        "players": [
-          "Player 1",
-          "Player 2",
-          "Player 3",
-          "Player 4",
-          "Player 5",
-          "Player 6",
-          "Player 7",
-          "Player 8",
-        ]
+        "players": sessionStorage.getItem("players").split(','),
       })
       .then(res=>{
         let newTournament = res.data.data;
@@ -67,7 +59,11 @@ export default class Tournament extends Component {
           <button onClick={(e)=>this.updateModalState(e, true)}>CREATE</button>
         </div>
         <TournamentList tournaments={tournaments}/>
-        {isShowModal && <Modal updateModalState={this.updateModalState}/>}
+        {isShowModal && (
+          <Modal updateModalState={this.updateModalState}>
+          <NewTournamentForm createTournament={this.createTournament}/>
+        </Modal>
+        )}
       </main>
     );
   }

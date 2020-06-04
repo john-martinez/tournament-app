@@ -1,0 +1,105 @@
+.new-tournament-form {
+
+  &__add {
+    border: none;
+    background-color: green;
+    color: white;
+    margin-left: 5px;
+  }
+
+  &__delete {
+    color: red;
+    display: none;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
+  
+  &__cta {
+    border: none;
+    border: .5px solid green;
+    background-color: green;
+    color: white;
+    padding: 3px;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: white;
+      color: green;
+      border-color: green;
+    }
+  }
+  &__breadcrumb {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: .6rem;
+    color: blue;
+    cursor: pointer;
+
+    &:hover {
+      color: darkorange;
+    }
+  }
+  
+  > h2 {
+    text-align: center;
+  }
+  
+  &__item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20px;
+
+    input {
+      text-align: center;
+      padding: 5px;
+      font-size: .7rem;
+      border: none;
+      outline: none;
+      border-bottom: 0.5px solid #afafaf;
+      transition: 0.2s ease-in-out;
+
+      &:focus {
+        border-bottom: 0.5px solid black;
+      }
+    }
+
+    > label {
+      margin-bottom: 5px;
+      font-size: .8rem;
+      color: #2b2b2b;
+      font-weight: bold;
+    }
+
+
+    > ol {
+      padding-left: 0;
+    }
+
+    > ol > li {
+      text-align: left;
+      font-size: .7rem;
+      padding: 3px 5px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+
+      &:hover{
+        background-color: #FFFFAA;
+      }
+
+      &:hover .new-tournament-form__delete {
+        display: inline;
+      }
+    } 
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}

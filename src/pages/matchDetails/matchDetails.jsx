@@ -22,7 +22,6 @@ export default class MatchDetails extends Component {
       player_2_score = Math.floor(Math.random()*5);
     } while (player_1_score === player_2_score);
     
-    console.log(player_1_score, player_2_score)
     axios.put(`http://localhost:8000/match/${id}`, {
       player_1_score,
       player_2_score

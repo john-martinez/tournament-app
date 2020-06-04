@@ -38,13 +38,14 @@ export default class Tournament extends Component {
       .catch(err=>console.log(err))
   }
 
-  updateModalState = (e,modalState) => {
+  updateModalState = (e, overrideClose) => {
     let newState = true;
 
-    if (!modalState && e.target.classList.value === "modal"){
+    if (overrideClose || (e && e.target.classList.value === "modal")){
       newState = false;
     } 
 
+    console.log(newState);
     this.setState({
       isShowModal: newState
     })
@@ -56,12 +57,15 @@ export default class Tournament extends Component {
     return (
       <main className="tournaments">
         <div className="side-bar">
-          <button onClick={(e)=>this.updateModalState(e, true)}>CREATE</button>
+          <button onClick={(e)=>this.updateModalState(e)}>CREATE</button>
         </div>
         <TournamentList tournaments={tournaments}/>
         {isShowModal && (
           <Modal updateModalState={this.updateModalState}>
-          <NewTournamentForm createTournament={this.createTournament}/>
+          <NewTournamentForm 
+            createTournament={this.createTournament}
+            updateModalState={this.updateModalState}
+          />
         </Modal>
         )}
       </main>

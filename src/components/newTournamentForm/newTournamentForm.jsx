@@ -3,20 +3,23 @@ import './newTournamentForm.scss';
 
 export default class NewTournamentForm extends Component {
   state = {
-    nameInput: sessionStorage.getItem("nameInput"),
+    nameInput: sessionStorage.getItem("nameInput") || '',
     playersInput: '',
-    players: sessionStorage.getItem("players").split(",") || [],
+    players: (sessionStorage.getItem("players") && sessionStorage.getItem("players").split(",")) || [],
     onNextStep: false,
   }
 
-  nextStep = () => {
-    const {  players, onNextStep } = this.state;
+  nextStep = async () => {
+    const { players, onNextStep } = this.state;
     const MIN_PLAYERS_COUNT = 2;
 
     if (!onNextStep) {
       this.setState({ onNextStep: true })
     } else if (onNextStep && players.length >= MIN_PLAYERS_COUNT) {
-      this.props.createTournament();
+      await this.props.createTournament();
+      sessionStorage.removeItem("players");
+      sessionStorage.removeItem("nameInput");
+      this.props.updateModalState(null,true);
     }
   }
 

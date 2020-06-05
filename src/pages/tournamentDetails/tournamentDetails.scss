@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-evenly;
   position: relative;
+  min-width: 100vw;
   width: max-content;
   margin: 0 auto;
   flex-wrap: wrap;
@@ -32,7 +33,7 @@
 
   &__header {
     width: 100%;
-    position: fixed;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;

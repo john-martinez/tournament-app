@@ -1,9 +1,10 @@
+@import '../../../partials/mixins';
+
 .tournament {
   border: 1px solid black;
   padding: 5px;
   margin: 5px;
   width: 200px;
-  max-width: 200px;
   height: 100px;
   position: relative;
   transition-duration: .3s;
@@ -11,6 +12,10 @@
   cursor: pointer;
   box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.12);
   background-color: white;
+
+  @include tablet {
+    max-width: 50%;
+  }
 
   &:hover {
     border: 1px solid orange;
@@ -43,6 +48,28 @@
     top: 3px;
     left: 5px;
     letter-spacing: 1px;
+    border: 1px solid black;
+    padding: 1px 5px;
+    
+    &--new {
+      background-color: orange;
+      color: white;
+    }
+
+    &--completed {
+      background-color: green;
+      color: white;
+    }
+
+    &--canceled {
+      background-color: red;
+      color: white;
+    }
+
+    &--paused {
+      background-color: blue;
+      color: white;
+    }
   }
 
   &__date {

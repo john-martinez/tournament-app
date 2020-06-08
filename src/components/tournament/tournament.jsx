@@ -42,7 +42,7 @@ export default function tournament({
           <h2 className="tournament__header">{name}</h2>
           <span className="tournament__type">{reformatType(type)}</span>
           <p className="tournament__date">{reformatDate(createdDate)}</p>
-          <span className="tournament__status">{status}</span>
+          <span className={`tournament__status tournament__status--${status}`}>{status}</span>
         </div>
 
         <div>

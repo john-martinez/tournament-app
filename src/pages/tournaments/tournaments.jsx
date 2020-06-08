@@ -44,8 +44,7 @@ export default class Tournament extends Component {
     if (overrideClose || (e && e.target.classList.value === "modal")){
       newState = false;
     } 
-
-    console.log(newState);
+    
     this.setState({
       isShowModal: newState
     })
@@ -57,8 +56,8 @@ export default class Tournament extends Component {
 
     return (
       <main className="tournaments">
-        <div className="side-bar">
-          <button onClick={(e)=>updateModalState(e)}>CREATE</button>
+        <div className="tournaments__banner">
+          <h1>Tournaments</h1>
         </div>
         <TournamentList 
           tournaments={tournaments} 

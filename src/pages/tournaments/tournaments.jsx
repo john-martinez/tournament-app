@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TournamentList from '../../components/tournamentList/tournamentList';
 import NewTournamentForm from '../../components/newTournamentForm/newTournamentForm';
 import Modal from '../../components/modal/modal';
+import FloatingButton from '../../components/floatingButton/floatingButton';
 import axios from 'axios';
 import './tournaments.scss';
 
@@ -72,6 +73,11 @@ export default class Tournament extends Component {
           />
         </Modal>
         )}
+        <FloatingButton 
+          icon="+" 
+          text="Create Tournament" 
+          callback={updateModalState}
+        />
       </main>
     );
   }

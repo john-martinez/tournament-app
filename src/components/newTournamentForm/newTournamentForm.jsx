@@ -90,7 +90,7 @@ export default class NewTournamentForm extends Component {
                 name="name" 
                 value={nameInput} 
                 onChange={this.updateNameInput}
-                className={`${isNameEmpty && 'new-tournament-form__field--error'}`} 
+                className={`${isNameEmpty ? 'new-tournament-form__field--error' : ''}`} 
               />
               { isNameEmpty && (
                 <span className="new-tournament-form__error">Please supply a name</span>

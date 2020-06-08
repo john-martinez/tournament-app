@@ -2,6 +2,7 @@ import React, { Component }  from 'react';
 import Round from '../../components/round/round';
 import Gate from '../../components/gate/gate';
 import './tournamentDetails.scss';
+import { updateTournamentStatus } from '../../util';
 import axios from 'axios';
 
 export default class TournamentDetails extends Component {
@@ -44,7 +45,8 @@ export default class TournamentDetails extends Component {
 
   renderCopy = () => {
     const { status } = this.state.tournament;
-    return <Gate type={ status } handler={()=>this.updateTournamentStatus('start')} />
+    const { id } = this.props.match.params;
+    return <Gate type={ status } handler={()=>updateTournamentStatus(id, 'start', this.retrieveTournament)} />
   }
 
   render(){

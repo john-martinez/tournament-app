@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TournamentList from '../../components/tournamentList/tournamentList';
 import NewTournamentForm from '../../components/newTournamentForm/newTournamentForm';
+import ClipLoader from "react-spinners/ClipLoader";
 import Modal from '../../components/modal/modal';
 import axios from 'axios';
 import './tournaments.scss';
@@ -54,26 +55,31 @@ export default class Tournament extends Component {
   render(){
     const { tournaments, isShowModal } = this.state;
     const { updateModalState,  createTournament, retrieveTournaments } = this;
-
-    return (
-      <main className="tournaments">
-        <div className="side-bar">
-          <button onClick={(e)=>updateModalState(e)}>CREATE</button>
-        </div>
-        <TournamentList 
-          tournaments={tournaments} 
-          history={this.props.history}
-          retrieveTournaments={retrieveTournaments}
-        />
-        {isShowModal && (
-          <Modal updateModalState={updateModalState}>
-          <NewTournamentForm 
-            createTournament={createTournament}
-            updateModalState={updateModalState}
+    if (tournaments.length) {
+      return (
+        <main className="tournaments">
+          <div className="side-bar">
+            <button onClick={(e)=>updateModalState(e)}>CREATE</button>
+          </div>
+          <TournamentList 
+            tournaments={tournaments} 
+            history={this.props.history}
+            retrieveTournaments={retrieveTournaments}
           />
-        </Modal>
-        )}
-      </main>
-    );
+          {isShowModal && (
+            <Modal updateModalState={updateModalState}>
+            <NewTournamentForm 
+              createTournament={createTournament}
+              updateModalState={updateModalState}
+            />
+          </Modal>
+          )}
+        </main>
+      ); 
+    } else {
+      return <div>
+        <ClipLoader />
+      </div>
+    }
   }
 }

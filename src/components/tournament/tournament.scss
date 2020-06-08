@@ -70,6 +70,10 @@
       background-color: blue;
       color: white;
     }
+
+    &--active {
+      background-color: yellow;
+    }
   }
 
   &__date {

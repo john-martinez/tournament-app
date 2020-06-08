@@ -7,30 +7,52 @@ export default class NewTournamentForm extends Component {
     playersInput: '',
     players: (sessionStorage.getItem("players") && sessionStorage.getItem("players").split(",")) || [],
     onNextStep: false,
+    isNameEmpty: false,
+    hasEnoughPlayers: true,
+    isPlayersInputEmpty: false,
   }
 
   nextStep = async () => {
-    const { players, onNextStep } = this.state;
+    const { players, onNextStep, nameInput, playersInput } = this.state;
     const MIN_PLAYERS_COUNT = 2;
+    const isNameEmpty = !nameInput.length;
+    
 
     if (!onNextStep) {
-      this.setState({ onNextStep: true })
-    } else if (onNextStep && players.length >= MIN_PLAYERS_COUNT) {
-      await this.props.createTournament();
-      sessionStorage.removeItem("players");
-      sessionStorage.removeItem("nameInput");
-      this.props.updateModalState(null,true);
+      if (isNameEmpty){
+        this.setState({ isNameEmpty: true })
+      } else {
+        this.setState({ onNextStep: true, isNameEmpty: false })
+      }
+      
+    } else if (onNextStep) {
+      if (players.length >= MIN_PLAYERS_COUNT) {
+        await this.props.createTournament();
+        sessionStorage.removeItem("players");
+        sessionStorage.removeItem("nameInput");
+        this.props.updateModalState(null,true);
+      } else {
+        this.setState({ hasEnoughPlayers: false })
+      }
     }
   }
 
   addPlayer = (e) => {
     e.preventDefault();
-    const newPlayers = [...this.state.players, this.state.playersInput];
-    this.setState({
-      players: newPlayers,
-      playersInput: '',
-    })
-    sessionStorage.setItem("players", newPlayers);
+    const { players, playersInput } = this.state;
+    const isPlayersInputEmpty = !playersInput.length;
+
+    if (isPlayersInputEmpty) {
+      this.setState({ isPlayersInputEmpty: true })
+    } else {
+      const newPlayers = [...players, playersInput];
+      this.setState({
+        players: newPlayers,
+        playersInput: '',
+        isPlayersInputEmpty: false,
+      })
+      sessionStorage.setItem("players", newPlayers);
+    }
   }
 
   updateNameInput = (e) => {
@@ -46,7 +68,15 @@ export default class NewTournamentForm extends Component {
     sessionStorage.setItem("players", playersContainer);
   }
   render(){
-    const { nameInput, playersInput, onNextStep, players } = this.state;
+    const { 
+      nameInput, 
+      playersInput, 
+      onNextStep, 
+      players, 
+      isNameEmpty,
+      isPlayersInputEmpty,
+      hasEnoughPlayers
+    } = this.state;
 
     return(
       <div className="new-tournament-form">
@@ -59,8 +89,12 @@ export default class NewTournamentForm extends Component {
                 type="text" 
                 name="name" 
                 value={nameInput} 
-                onChange={this.updateNameInput} 
+                onChange={this.updateNameInput}
+                className={`${isNameEmpty && 'new-tournament-form__field--error'}`} 
               />
+              { isNameEmpty && (
+                <span className="new-tournament-form__error">Please supply a name</span>
+              )}
             </div>
 
           : <>
@@ -72,15 +106,22 @@ export default class NewTournamentForm extends Component {
                   {"< Back "}
                 </span> 
                 <label htmlFor="players">Add Player</label>
-                <div>
+                <div className="new-tournament-form__input-container">
                   <input 
                     type="text" 
                     name="players" 
                     value={playersInput}
-                    onChange={(e)=>this.setState({ playersInput: e.target.value})}  
+                    onChange={(e)=>this.setState({ playersInput: e.target.value})} 
+                    className={`${isPlayersInputEmpty && 'new-tournament-form__field--error'}`} 
                   />
                   <button className="new-tournament-form__add" onClick={this.addPlayer}>+</button>
                 </div>
+                { isPlayersInputEmpty && (
+                  <span className="new-tournament-form__error">This field cannot be empty</span>
+                )}
+                { !hasEnoughPlayers && (
+                  <span className="new-tournament-form__error">Must supply 2 or more players</span>
+                )}
               </form>
               <div className="new-tournament-form__item">
                 <ol className="new-tournament-form__players-list">

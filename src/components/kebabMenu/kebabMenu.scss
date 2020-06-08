@@ -3,7 +3,23 @@
   cursor: pointer;
   top: 5px;
   right: 5px;
+  padding: 0px 5px;
+  border-radius: 50%;
+  &:hover {
+    background-color: #fafafa;
+  }
 
+  &__menu-item {
+    box-sizing: border-box;
+    border-bottom: 1px solid black;
+    width: 100%;
+    padding: 5px;
+
+    &:hover { background-color: #fafafa }
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
   &__hidden {
     position: absolute;
     top: 20px;
@@ -11,12 +27,9 @@
     width: 100px;
     background-color: white;   
     border: 1px solid black;
-    padding: 5px;
     cursor: pointer;
     z-index: 100;
     font-size: .7rem;
-
-    &:hover { background-color: #fafafa }
   }
   &__button { 
     height: 10px;

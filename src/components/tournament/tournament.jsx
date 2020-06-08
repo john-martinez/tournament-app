@@ -2,7 +2,11 @@ import React from 'react';
 import KebabMenu from '../kebabMenu/kebabMenu';
 import './tournament.scss';
 
-export default function tournament({ data, history }){
+export default function tournament({ 
+    data, 
+    history,
+    retrieveTournaments,
+   }){
   const {
     createdDate,
     name, 
@@ -31,8 +35,6 @@ export default function tournament({ data, history }){
   return (
     <div 
       className="tournament" 
-      id={_id}
-      to={`tournaments/${_id}`}
       onClick={onClickHandler}
     >
       <div className="tournament__row">
@@ -51,7 +53,11 @@ export default function tournament({ data, history }){
           }
         </div>
       </div>
-      <KebabMenu />
+      <KebabMenu 
+        id={_id} 
+        retrieveTournaments={retrieveTournaments}
+        status={status}
+      />
     </div>
   );
 }

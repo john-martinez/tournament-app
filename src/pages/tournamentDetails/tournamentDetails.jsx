@@ -42,21 +42,6 @@ export default class TournamentDetails extends Component {
     return rounds;
   }
 
-  updateTournamentStatus = (status) => {
-    const { id } = this.props.match.params
-    axios
-      .put(`http://localhost:8000/tournament/${id}/${status}`, {})
-      .then(_=>this.retrieveTournament())
-      .catch(err=>console.log(err))
-  }
-
-  deleteTournament = () => {
-    const { id } = this.props.match.params
-    axios
-      .delete(`http://localhost:8000/tournament/${id}/delete`)
-      .then(_=>this.props.history.push('/'))
-      .catch(err=>console.log(err))
-  }
   renderCopy = () => {
     const { status } = this.state.tournament;
     return <Gate type={ status } handler={()=>this.updateTournamentStatus('start')} />
@@ -72,15 +57,6 @@ export default class TournamentDetails extends Component {
       <div className="tournament-details">
         <div  className="tournament-details__header">
           <h1>{ name } </h1>
-          <button className="tournament-details__button" onClick={()=>this.updateTournamentStatus('pause')}>
-            Pause
-          </button>
-          <button className="tournament-details__button" onClick={()=>this.updateTournamentStatus('cancel')}>
-            Cancel
-          </button>
-          <button className="tournament-details__button" onClick={()=>this.deleteTournament('delete')}>
-            Delete
-          </button>
         </div>
         {doesRoundsExist && this.renderRoundList()}
         { isGated && (

@@ -53,14 +53,18 @@ export default class Tournament extends Component {
 
   render(){
     const { tournaments, isShowModal } = this.state;
-    const { updateModalState,  createTournament } = this;
+    const { updateModalState,  createTournament, retrieveTournaments } = this;
 
     return (
       <main className="tournaments">
         <div className="side-bar">
           <button onClick={(e)=>updateModalState(e)}>CREATE</button>
         </div>
-        <TournamentList tournaments={tournaments} history={this.props.history}/>
+        <TournamentList 
+          tournaments={tournaments} 
+          history={this.props.history}
+          retrieveTournaments={retrieveTournaments}
+        />
         {isShowModal && (
           <Modal updateModalState={updateModalState}>
           <NewTournamentForm 

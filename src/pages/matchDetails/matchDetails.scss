@@ -1,3 +1,4 @@
+@import '../../../partials/mixins';
 .match-details {
   height: 100vh;
   overflow: hidden;
@@ -11,6 +12,11 @@
 
   &__container {
     display: flex;
+    flex-direction: column;
+    
+    @include tablet {
+      flex-direction: row;
+    }
   }
 
   &__result {

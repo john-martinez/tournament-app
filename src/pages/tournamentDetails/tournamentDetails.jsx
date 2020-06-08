@@ -57,9 +57,7 @@ export default class TournamentDetails extends Component {
     
     return(
       <div className="tournament-details">
-        <div  className="tournament-details__header">
-          <h1>{ name } </h1>
-        </div>
+        <h1 className="tournament-details__header"> { name } </h1>
         {doesRoundsExist && this.renderRoundList()}
         { isGated && (
           <div className="tournament-details__gate">

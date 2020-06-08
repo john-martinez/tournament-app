@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './matchDetails.scss';
 import axios from 'axios';
 
@@ -41,11 +42,15 @@ export default class MatchDetails extends Component {
   }
 
   render(){
-    const { match, player_1, player_2 } = this.state.match;
+    const { match, player_1, player_2, tournament } = this.state.match;
+
     if (match) {
       return(
         <div className="match-details">
-          <h1 className="match-details__name">Match {match}</h1>
+          <div className="match-details__name">
+            <Link to={`/tournaments/${tournament}`} className="match-details__back"> {'< BACK'} </Link>
+            <h1> Match { match } </h1>
+          </div>
           <div className="match-details__container">
             <div className={`match-details__item ${this.isWinner(player_1)}`}>
               <h2> {player_1.name} </h2>

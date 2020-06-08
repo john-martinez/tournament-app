@@ -1,19 +1,46 @@
 @import '../../../partials/mixins';
+
 .match-details {
   height: 100vh;
   overflow: hidden;
   margin: 5px;
   
 
+  &__back {
+    color: white;
+    position: absolute;
+    top: 13px;
+    left: 5px;
+    font-size: 0.8rem;
+
+    &:hover {
+      color: black;
+    }
+  }
+
   &__name {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     text-align: center;
-    margin-top: 0;
+    background-color: #d96c00;
+    color: white;
+    
+    > h1 {
+      margin: 0;
+    }
   }
 
   &__container {
     display: flex;
     flex-direction: column;
-    
+    padding-top: 70px;
+
     @include tablet {
       flex-direction: row;
     }

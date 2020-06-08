@@ -1,5 +1,5 @@
 .match {
-  width: 150px;
+  width: 200px;
   padding: 5px;
   transition: .3s;
 
@@ -8,7 +8,7 @@
   } 
 
   &:hover {
-    background-color: lightgray;
+    background-color: orange;
     cursor: pointer;
   }
   &__number {
@@ -38,6 +38,7 @@
     padding: 5px;
     min-height: 1rem;
     background-color: white;
+    box-sizing: content-box;
 
     &:last-of-type {
       border-top: none;

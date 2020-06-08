@@ -31,6 +31,19 @@
     flex-direction: column;
   }
 
+  &__back {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: white;
+
+    &:hover{
+      color: black;
+    }
+  }
+
   &__header {
     width: 100%;
     position: absolute;
@@ -43,7 +56,10 @@
     text-align: center;
     background-color: #d96c00;
     color: white;
-    margin: 0;
+    
+    > h1 {
+      margin: 0;
+    }
   }
 
 

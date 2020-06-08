@@ -4,8 +4,8 @@
   border: 1px solid black;
   padding: 5px;
   margin: 5px;
-  width: 200px;
-  height: 100px;
+  width: 250px;
+  height: 150px;
   position: relative;
   transition-duration: .3s;
   flex-grow: 1;
@@ -29,7 +29,7 @@
 
     div > p {
       margin: 0;
-      font-size: .6rem;
+      font-size: .9rem;
     }
 
     div > p > span {
@@ -38,12 +38,12 @@
   }
 
   &__header {
-    margin: 15px 0 -5px 0;
-    font-size: 1.2rem;
+    margin: 20px 0 -5px 0;
+    font-size: 1.5rem;
   }
 
   &__status {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     position: absolute;
     top: 3px;
     left: 5px;
@@ -81,7 +81,7 @@
   }
 
   &__type {
-    font-size: 0.8rem;
+    font-size: 1rem;
     text-transform: capitalize;
   }
 }

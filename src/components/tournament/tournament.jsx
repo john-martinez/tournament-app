@@ -20,28 +20,29 @@ export default function tournament({ data }){
   }
 
   const reformatType = (type) => type.replace("_", " ");
- return (
-  <Link 
-    className="tournament" 
-    id={_id}
-    to={`tournaments/${_id}`}
-  >
-    <div className="tournament__row">
-      <div>
-        <h2 className="tournament__header">{name}</h2>
-        <span className="tournament__type">{reformatType(type)}</span>
-        <p className="tournament__date">{reformatDate(createdDate)}</p>
-        <span className="tournament__status">{status}</span>
-      </div>
 
-      <div>
-        {status === 'completed' && 
-          <p>
-            <span> Winner: </span> {winner}
-          </p>
-        }
+  return (
+    <Link 
+      className="tournament" 
+      id={_id}
+      to={`tournaments/${_id}`}
+    >
+      <div className="tournament__row">
+        <div>
+          <h2 className="tournament__header">{name}</h2>
+          <span className="tournament__type">{reformatType(type)}</span>
+          <p className="tournament__date">{reformatDate(createdDate)}</p>
+          <span className="tournament__status">{status}</span>
+        </div>
+
+        <div>
+          {status === 'completed' && 
+            <p>
+              <span> Winner: </span> {winner}
+            </p>
+          }
+        </div>
       </div>
-    </div>
-  </Link>
- );
+    </Link>
+  );
 }

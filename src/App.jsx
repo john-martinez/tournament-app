@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Tournaments from './pages/tournaments/tournaments';
 import TournamentDetails from './pages/tournamentDetails/tournamentDetails';
 import MatchDetails from './pages/matchDetails/matchDetails';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (

@@ -1,16 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import KebabMenu from '../kebabMenu/kebabMenu';
 import './tournament.scss';
 
-export default function tournament({ data }){
+export default function tournament({ data, history }){
   const {
     createdDate,
     name, 
     status,
     type,
     winner,
-    _id,
+    _id
   } = data;
 
   const reformatDate = (dateString) => {
@@ -23,7 +22,10 @@ export default function tournament({ data }){
   const reformatType = (type) => type.replace("_", " ");
 
   const onClickHandler = (e) => {
-    console.log(e.target.classList.value)
+    const isKebab = e.target.classList.value.includes('kebab');
+    if (!isKebab) {
+      history.push(`tournaments/${_id}`)
+    }
   }
 
   return (

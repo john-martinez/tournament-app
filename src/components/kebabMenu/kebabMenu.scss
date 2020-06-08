@@ -3,24 +3,24 @@
   cursor: pointer;
   top: 5px;
   right: 5px;
-  transition: .2s linear !important; 
 
   &__hidden {
     position: absolute;
-    top: 30px;
-    right: -5px;
-    width: 200px;
+    top: 20px;
+    right: 0px;
+    width: 100px;
     background-color: white;   
     border: 1px solid black;
-    padding: 15px;
+    padding: 5px;
     cursor: pointer;
-    border-radius: 5px;
-    
-    &:hover { background-color: white }
+    z-index: 100;
+    font-size: .7rem;
+
+    &:hover { background-color: #fafafa }
   }
   &__button { 
+    height: 10px;
     width: 10px;
-    height: auto;
     &--rotated { transform: rotate(90deg) }
   }
 }

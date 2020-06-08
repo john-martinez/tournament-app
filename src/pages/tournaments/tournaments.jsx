@@ -60,7 +60,7 @@ export default class Tournament extends Component {
         <div className="side-bar">
           <button onClick={(e)=>updateModalState(e)}>CREATE</button>
         </div>
-        <TournamentList tournaments={tournaments}/>
+        <TournamentList tournaments={tournaments} history={this.props.history}/>
         {isShowModal && (
           <Modal updateModalState={updateModalState}>
           <NewTournamentForm 

@@ -56,9 +56,6 @@ export default class TournamentDetails extends Component {
       .delete(`http://localhost:8000/tournament/${id}/delete`)
       .then(_=>this.props.history.push('/'))
       .catch(err=>console.log(err))
-
-
-
   }
   renderCopy = () => {
     const { status } = this.state.tournament;
@@ -73,7 +70,8 @@ export default class TournamentDetails extends Component {
     
     return(
       <div className="tournament-details">
-        <h1 className="tournament-details__header">{ name }
+        <div  className="tournament-details__header">
+          <h1>{ name } </h1>
           <button className="tournament-details__button" onClick={()=>this.updateTournamentStatus('pause')}>
             Pause
           </button>
@@ -83,7 +81,7 @@ export default class TournamentDetails extends Component {
           <button className="tournament-details__button" onClick={()=>this.deleteTournament('delete')}>
             Delete
           </button>
-        </h1>
+        </div>
         {doesRoundsExist && this.renderRoundList()}
         { isGated && (
           <div className="tournament-details__gate">

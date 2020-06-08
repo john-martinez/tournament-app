@@ -1,0 +1,26 @@
+.kebab {
+  position: absolute;
+  cursor: pointer;
+  top: 5px;
+  right: 5px;
+  transition: .2s linear !important; 
+
+  &__hidden {
+    position: absolute;
+    top: 30px;
+    right: -5px;
+    width: 200px;
+    background-color: white;   
+    border: 1px solid black;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    
+    &:hover { background-color: white }
+  }
+  &__button { 
+    width: 10px;
+    height: auto;
+    &--rotated { transform: rotate(90deg) }
+  }
+}

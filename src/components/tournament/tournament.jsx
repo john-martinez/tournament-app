@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import KebabMenu from '../kebabMenu/kebabMenu';
 import './tournament.scss';
 
 export default function tournament({ data }){
@@ -21,11 +22,16 @@ export default function tournament({ data }){
 
   const reformatType = (type) => type.replace("_", " ");
 
+  const onClickHandler = (e) => {
+    console.log(e.target.classList.value)
+  }
+
   return (
-    <Link 
+    <div 
       className="tournament" 
       id={_id}
       to={`tournaments/${_id}`}
+      onClick={onClickHandler}
     >
       <div className="tournament__row">
         <div>
@@ -43,6 +49,7 @@ export default function tournament({ data }){
           }
         </div>
       </div>
-    </Link>
+      <KebabMenu />
+    </div>
   );
 }

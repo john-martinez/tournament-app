@@ -3,6 +3,7 @@
   padding: 5px;
   margin: 5px;
   width: 200px;
+  max-width: 300px;
   height: 100px;
   position: relative;
   transition-duration: .3s;
@@ -40,7 +41,7 @@
     font-size: 0.6rem;
     position: absolute;
     top: 3px;
-    right: 3px;
+    left: 5px;
     letter-spacing: 1px;
   }
 

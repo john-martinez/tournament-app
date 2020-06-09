@@ -55,34 +55,6 @@ export default class Tournament extends Component {
   render(){
     const { tournaments, isShowModal } = this.state;
     const { updateModalState,  createTournament, retrieveTournaments } = this;
-<<<<<<< HEAD
-    if (tournaments.length) {
-      return (
-        <main className="tournaments">
-          <div className="side-bar">
-            <button onClick={(e)=>updateModalState(e)}>CREATE</button>
-          </div>
-          <TournamentList 
-            tournaments={tournaments} 
-            history={this.props.history}
-            retrieveTournaments={retrieveTournaments}
-          />
-          {isShowModal && (
-            <Modal updateModalState={updateModalState}>
-            <NewTournamentForm 
-              createTournament={createTournament}
-              updateModalState={updateModalState}
-            />
-          </Modal>
-          )}
-        </main>
-      ); 
-    } else {
-      return <div>
-        <ClipLoader />
-      </div>
-    }
-=======
 
     return (
       <main className="tournaments">
@@ -109,6 +81,5 @@ export default class Tournament extends Component {
         />
       </main>
     );
->>>>>>> fdf6a328cd67aac5e1da400c61b25a8f839d8cec
   }
 }

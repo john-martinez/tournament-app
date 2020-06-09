@@ -1,6 +1,7 @@
 import React, { Component }  from 'react';
 import Round from '../../components/round/round';
 import Gate from '../../components/gate/gate';
+import { Link } from 'react-router-dom';
 import './tournamentDetails.scss';
 import { updateTournamentStatus } from '../../util';
 import axios from 'axios';
@@ -57,9 +58,11 @@ export default class TournamentDetails extends Component {
     
     return(
       <div className="tournament-details">
-        <div  className="tournament-details__header">
-          <h1>{ name } </h1>
+        <div className="tournament-details__header">
+          <Link to="/tournaments" className="tournament-details__back"> {'< BACK'} </Link>
+          <h1> { name } </h1>
         </div>
+        
         {doesRoundsExist && this.renderRoundList()}
         { isGated && (
           <div className="tournament-details__gate">

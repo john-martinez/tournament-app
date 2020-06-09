@@ -6,7 +6,7 @@
   width: max-content;
   margin: 0 auto;
   flex-wrap: wrap;
-  padding-top: 100px;
+  padding-top: 50px;
 
   &__gate {
     position: fixed;
@@ -31,6 +31,19 @@
     flex-direction: column;
   }
 
+  &__back {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    color: white;
+
+    &:hover{
+      color: black;
+    }
+  }
+
   &__header {
     width: 100%;
     position: absolute;
@@ -41,7 +54,14 @@
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
+    background-color: #d96c00;
+    color: white;
+    
+    > h1 {
+      margin: 0;
+    }
   }
+
 
   &__copy {
     color: white;

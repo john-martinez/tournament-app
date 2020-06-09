@@ -3,6 +3,7 @@ import TournamentList from '../../components/tournamentList/tournamentList';
 import NewTournamentForm from '../../components/newTournamentForm/newTournamentForm';
 import ClipLoader from "react-spinners/ClipLoader";
 import Modal from '../../components/modal/modal';
+import FloatingButton from '../../components/floatingButton/floatingButton';
 import axios from 'axios';
 import './tournaments.scss';
 
@@ -45,8 +46,7 @@ export default class Tournament extends Component {
     if (overrideClose || (e && e.target.classList.value === "modal")){
       newState = false;
     } 
-
-    console.log(newState);
+    
     this.setState({
       isShowModal: newState
     })
@@ -55,6 +55,7 @@ export default class Tournament extends Component {
   render(){
     const { tournaments, isShowModal } = this.state;
     const { updateModalState,  createTournament, retrieveTournaments } = this;
+<<<<<<< HEAD
     if (tournaments.length) {
       return (
         <main className="tournaments">
@@ -81,5 +82,33 @@ export default class Tournament extends Component {
         <ClipLoader />
       </div>
     }
+=======
+
+    return (
+      <main className="tournaments">
+        <div className="tournaments__banner">
+          <h1>Tournaments</h1>
+        </div>
+        <TournamentList 
+          tournaments={tournaments} 
+          history={this.props.history}
+          retrieveTournaments={retrieveTournaments}
+        />
+        {isShowModal && (
+          <Modal updateModalState={updateModalState}>
+          <NewTournamentForm 
+            createTournament={createTournament}
+            updateModalState={updateModalState}
+          />
+        </Modal>
+        )}
+        <FloatingButton 
+          icon="+" 
+          text="Create Tournament" 
+          callback={updateModalState}
+        />
+      </main>
+    );
+>>>>>>> fdf6a328cd67aac5e1da400c61b25a8f839d8cec
   }
 }

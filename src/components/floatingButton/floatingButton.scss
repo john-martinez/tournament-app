@@ -1,0 +1,57 @@
+.floating-button {
+  display: flex;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  align-items: center;
+  user-select: none;
+  &__text {
+    margin-right: -10px;
+    background-color: orange;
+    color: white;
+    padding: 5px 15px 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    width: 175px;
+    right: 50px;
+    cursor: pointer;
+    box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.12);
+    overflow: hidden;
+    white-space: nowrap;
+    transition: 0.3s; 
+    opacity: 1;
+
+    &:hover {
+      background-color: black;
+    }
+
+    &--hidden {
+      width: 0;
+      opacity: 0;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    border-radius: 50%;
+    background-color: orange;
+    box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.12);
+    height: 50px;
+    width: 50px;
+    color: white;
+    z-index: 5;
+    cursor: pointer;
+
+    > span {
+      position: relative;
+      top: -5px;
+    }
+
+    &:hover {
+      background-color: black;
+    }
+  }
+}

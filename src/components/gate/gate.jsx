@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Gate({
   type,
@@ -22,9 +23,14 @@ export default function Gate({
       <h2 className="tournament-details__copy">
         {generateCopy()}
       </h2>
-      {!isCancelled && (
-        <button className="tournament-details__cta" onClick={handler}>{isNew ? 'START' : 'RESUME'}</button>
-      )}
+      {!isCancelled 
+        ? (
+            <button className="tournament-details__cta" onClick={handler}>{isNew ? 'START' : 'RESUME'}</button>
+          )
+        : (
+            <Link className="tournament-details__cta" to='/'>BACK</Link>
+          ) 
+      }
     </div>
   );
 }

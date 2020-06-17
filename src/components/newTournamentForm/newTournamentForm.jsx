@@ -13,7 +13,7 @@ export default class NewTournamentForm extends Component {
   }
 
   nextStep = async () => {
-    const { players, onNextStep, nameInput, playersInput } = this.state;
+    const { players, onNextStep, nameInput } = this.state;
     const MIN_PLAYERS_COUNT = 2;
     const isNameEmpty = !nameInput.length;
     

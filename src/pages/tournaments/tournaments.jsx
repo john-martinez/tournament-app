@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import TournamentList from '../../components/tournamentList/tournamentList';
 import NewTournamentForm from '../../components/newTournamentForm/newTournamentForm';
-import ClipLoader from "react-spinners/ClipLoader";
 import Modal from '../../components/modal/modal';
 import FloatingButton from '../../components/floatingButton/floatingButton';
 import axios from 'axios';

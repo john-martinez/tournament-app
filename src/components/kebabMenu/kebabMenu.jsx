@@ -29,7 +29,7 @@ class Kebabmenu extends Component {
   
     return(
       <div className="kebab" onClick={kebabHandler}>
-        <img src={image} className={`kebab__button ${this.state.show ? 'kebab__button--rotated' : ''}`} />
+        <img src={image} className={`kebab__button ${this.state.show ? 'kebab__button--rotated' : ''}`} alt="kebab-menu" />
         {this.state.show 
           ? <div className="kebab__hidden" onClick={this.testHandler}>
             { isCancelled && isCompleted && (
